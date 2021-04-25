@@ -1,0 +1,14 @@
+{
+  "name": "node-blue-node-ekey-udp",
+  "version": "1.0.0",
+  "description": "A node to receive packets from ekey udp converter.",
+  "homepage": "https://github.com/dimmu311/node-blue-node-ekey-udp",
+  "node-blue": {
+    "maxThreadCounts": {
+      "ekey-udp": 0
+    },
+    "nodes": {
+      "ekey-udp": "ekey-udp.so"
+    }
+  }
+}
