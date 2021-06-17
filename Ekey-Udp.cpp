@@ -322,7 +322,7 @@ void Ekey::processHomePacket(const std::string &data, Flows::PVariable &var) {
  */
     try {
         _out->printMessage("Process Home Packet -> 0x" + Flows::HelperFunctions::getHexString(data),4);
-        if(data.length() != 22){
+        if(data.length() != 27){
             _out->printError("dropping packet because of length mismatch. packet was " + std::to_string(data.length()) + " bytes long and is 0x" + Flows::HelperFunctions::getHexString(data));
             return;
         }
