@@ -328,24 +328,24 @@ void Ekey::processHomePacket(const std::string &data, Flows::PVariable &var) {
         }
 
         var->structValue->emplace("packetType", std::make_shared<Flows::Variable>(std::stoi(data.substr(0,1))));
-        var->structValue->emplace("userId", std::make_shared<Flows::Variable>(std::stoi(data.substr(1,4))));
+        var->structValue->emplace("userId", std::make_shared<Flows::Variable>(std::stoi(data.substr(2,4))));
 
-        auto fingerId = data.substr(5,1);
+        auto fingerId = data.substr(7,1);
         std::string finger;
         int32_t iFinger;
         getFinger(fingerId, finger, iFinger);
         var->structValue->emplace("fingerId", std::make_shared<Flows::Variable>(iFinger));
         var->structValue->emplace("finger", std::make_shared<Flows::Variable>(finger));
-        var->structValue->emplace("serialNr", std::make_shared<Flows::Variable>(data.substr(6, 14)));
+        var->structValue->emplace("serialNr", std::make_shared<Flows::Variable>(data.substr(9, 14)));
 
-        int32_t iAction = std::stoi(data.substr(20, 1));
+        int32_t iAction = std::stoi(data.substr(24, 1));
         std::string action;
         if(iAction == 1) action = "open";
         else if (iAction == 2) action = "refuse";
 
         var->structValue->emplace("action", std::make_shared<Flows::Variable>(action));
 
-        auto relaysId = data.substr(21,1);
+        auto relaysId = data.substr(26,1);
         int32_t iRelays;
         std::string relays;
         if(relaysId == "d"){
